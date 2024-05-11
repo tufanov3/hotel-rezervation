@@ -1,4 +1,4 @@
-export const Footer = () => {
+export const Login = () => {
     return(
         <div></div>
     )

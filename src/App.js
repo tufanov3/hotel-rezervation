@@ -1,15 +1,18 @@
-import {Routes, Route} from 'react-router-dom'
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { Header, HotelList } from "./components";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-    <Routes>
-      <Route />
-      <Route />
-      <Route />
-      <Route />
-    </Routes>
+      <Header />
+      <HotelList />
+      <Routes>
+        <Route />
+        <Route />
+        <Route />
+        <Route />
+      </Routes>
     </div>
   );
 }
