@@ -3,11 +3,9 @@
 	padding: 0;
 	margin: 0;
 	border: 0;
-  background-image: url('../hotel-image/image.jpg')
+    background-image: url('./image.jpg')
 }
 
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }

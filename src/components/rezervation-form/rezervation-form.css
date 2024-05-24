@@ -1,0 +1,40 @@
+.rezervation {
+    padding: 8px 12px;
+    position: relative;
+    top: 100px;
+    border-radius: 10px;
+    background: white;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.reservation-form {
+    display: flex;
+    background: white;
+    gap: 7px;
+}
+.rezerv-forms {
+    background: white;
+    width: 200px;
+}
+select {
+    width: 100%;
+    background: white;
+}
+input {
+    width: 100%;
+    padding: 5px;
+}
+.btn-wrap_booking {
+    background: white;
+}
+.btn-booking {
+    margin: 3px 0 0 15px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    min-width: 120px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(60deg, #0872b6, #024a85)    
+}

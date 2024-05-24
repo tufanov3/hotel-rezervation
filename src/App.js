@@ -1,18 +1,20 @@
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import { Header, HotelList } from "./components";
+import { Authorization, Register } from "./components/header/log-in";
+import { Header, ReservationForm, RoomeList } from "./components";
 import "./App.css";
 
 function App() {
+
   return (
     <div className="App">
-      <Header />
-      <HotelList />
-      <Routes>
-        <Route />
-        <Route />
-        <Route />
-        <Route />
-      </Routes>
+        <Header />
+        <ReservationForm />
+        <Routes>
+          <Route path="/authorization" element={<Authorization />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <RoomeList />
     </div>
   );
 }
