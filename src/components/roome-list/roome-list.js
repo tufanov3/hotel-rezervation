@@ -3,13 +3,32 @@ import './roome-list.css';
 
 export const RoomeList = () => {
   const [rooms, setRooms] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/rooms')
-      .then(response => response.json())
-      .then(data => setRooms(data))
-      .catch(error => console.error('Error fetching rooms:', error));
+    fetch('http://localhost:3001/rooms')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (Array.isArray(data.rooms)) {
+          setRooms(data.rooms);
+        } else {
+          throw new Error('Data format is incorrect');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching rooms:', error);
+        setError(error.message);
+      });
   }, []);
+
+  if (error) {
+    return <div>Error fetching rooms: {error}</div>;
+  }
 
   return (
     <div>
