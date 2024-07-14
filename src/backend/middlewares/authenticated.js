@@ -1,14 +1,29 @@
-const { verify } = require('../halpers/token')
-const User = require('../models/User')
+const { verify } = require('../halpers/token');
+const User = require('../models/User');
+
 module.exports = async function(req, res, next) {
-    const tokenData = verify(req.cookies.token)
+    const token = req.cookies.token;
 
-    const user = await User.findOne({_id: tokenData.id})
+    console.log('Received token:', token); // Добавьте логирование полученного токена
 
-    if(!user) {
-        res.send({error: 'Authenticated user not found'})
-        return;
+    if (!token) {
+        return res.status(401).json({ error: 'Authentication error: Token missing' });
     }
-    req.user = user
-    next()
-}
+
+    try {
+        const tokenData = verify(token);
+        console.log('Token data:', tokenData); // Добавьте логирование данных из токена
+
+        const user = await User.findOne({ _id: tokenData.id });
+
+        if (!user) {
+            return res.status(401).json({ error: 'Authenticated user not found' });
+        }
+
+        req.user = user;
+        next();
+    } catch (error) {
+        console.error('JWT verification error:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+};

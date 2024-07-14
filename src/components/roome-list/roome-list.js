@@ -8,14 +8,8 @@ export const RoomeList = () => {
   useEffect(() => {
     fetch('http://localhost:3001/rooms')
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (Array.isArray(data.rooms)) {
-          setRooms(data.rooms);
+        if (Array.isArray(response.data.rooms)) {
+          setRooms(response.data.rooms);
         } else {
           throw new Error('Data format is incorrect');
         }

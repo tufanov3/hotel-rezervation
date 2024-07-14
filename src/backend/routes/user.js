@@ -2,8 +2,8 @@ const express = require('express')
 const { getUsers, getRoles, updateUser, deleteUser } = require('../controllers/user')
 const hasRole = require('../middlewares/hasRole')
 const authenticated = require('../middlewares/authenticated')
-const mapUser = require('../helpers/mapUser')
-const ROLES = require('../constants/roles')
+const mapUser = require('../halpers/mapUser')
+const ROLES = require('../models/User')
 
 const router = express.Router({ mergeParams: true })
 
